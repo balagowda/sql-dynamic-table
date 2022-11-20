@@ -1,0 +1,84 @@
+<%- include("partials/header") %>
+
+<h2>Table Details</h2>
+
+<style>
+    table{
+        width: 90%;
+        margin: 10px;
+    }
+    table,th,td {
+        border: 1px solid;
+        border-collapse:collapse;
+    }
+    td{
+        text-align: center;
+    }
+</style>
+
+<table>
+    <tr>
+        <% for(let i=0;i<Object.keys(res[0]).length;i++){ %>
+            <% var b = JSON.stringify(Object.keys(res[0])[i]) %>
+            <th> <%= b.replace(/\"/g, "") %> </th>
+        <% } %>
+    </tr>
+    <input type="hidden" name="tableName" value="details"></input>
+    <% for(let i=0; i<res.length; i++){ %>
+        <tr>
+            <% for(let j=0; j<Object.keys(res[i]).length; j++){ %>
+                <% var c = JSON.stringify(Object.values(res[i])[j]) %>
+                <td>
+                    <%= c.replace(/\"/g, "") %>
+                </td>
+            <% } %>
+        </tr>
+    <% } %>
+</table>
+
+<div id="display">
+    <form action="/insertDetails" method="post">
+        <label >Please enter the student details</label>
+        <label>ID:</label>
+        <input type="number" name="id">
+        <label>Age:</label>
+        <input type="number" name="age">
+        <label>Result:</label>
+        <input type="text" name="result">
+        <label>Rank:</label>
+        <input type="text" name="rank">
+        <input type="hidden" name="table" value="details"></input>
+        <input type="submit" value="ADD" id="sub">
+    </form>
+</div>
+
+<div id="delete">
+    <form action="/deleteDetails" method="post">
+        <label >Please enter required details</label>
+        <label>ID:</label>
+        <input type="number" name="id">
+        <label>Age:</label>
+        <input type="number" name="age">
+        <input type="hidden" name="table" value="details"></input>
+        <input type="submit" value="Delete" id="sub">
+    </form>
+</div>
+
+<div id="edit">
+    <form action="/editDetails" method="post">
+        <label >Please enter the details to change</label>
+        <mark>Note: If you don't want to change all the data listed below please enter previously recorded.</mark>
+        <label>ID:</label>
+        <input type="number" name="id">
+        <label>Age:</label>
+        <input type="number" name="age">
+        <label>Result:</label>
+        <input type="text" name="result">
+        <label>Rank:</label>
+        <input type="text" name="rank">
+        <input type="hidden" name="table" value="details"></input>
+        <input type="submit" value="Change" id="sub">
+    </form>
+</div>
+
+<%- include("partials/footer") %>

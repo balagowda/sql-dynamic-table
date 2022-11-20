@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Table</title>
+    <link rel="stylesheet" href="css\style.css">
+</head>
+<body>
+    <div id="parent" class="parent">
+        <div id="header" class="child">
+            <label>Table</label>
+            <form action="/submit" method="post">
+                <select name="table" id="tab" onchange="this.form.submit()">
+                    <option value="">''</option>
+                    <option name="Details" value="details">Details</option>
+                    <option name="Student" value="student">Student</option>
+                </select>
+            </form>
+        </div>
+        <div id="option" class="child">
+            <label>Custom Table:</label>
+            <button onclick="display(); style.backgroundColor='red'" >Insert </button>
+            <button onclick="delete1(); style.backgroundColor='red'">Delete </button>
+            <button onclick="edit1(); style.backgroundColor='red'">Edit </button>
+        </div>
+    </div>
